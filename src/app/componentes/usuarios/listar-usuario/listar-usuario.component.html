@@ -1,0 +1,36 @@
+<br>
+  <h4 class="text-center">Lista dos usuários</h4>
+<br>
+<div *ngIf="listaUsuarios.length > 0, else semUsuarios">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+      <th>id</th>
+      <th>Usuario</th>
+      <th>E-mail</th>
+      <th>Password</th>
+      <th>Excluir</th>
+      <th>Editar</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let usuario of listaUsuarios">
+          <!-- <app-usuario [usuario]="usuario"></app-usuario> -->
+          <td>{{ usuario.id }}</td>
+          <td>{{ usuario.name }}</td>
+          <td>{{ usuario.email }}</td>
+          <td>{{ usuario.password }}</td>
+          <td><button type="button" class="btn btn-danger btn-sm" routerLink="/usuarios/excluirUsuario/{{ usuario.id }}">Excluir</button></td>
+          <td><button type="button" class="btn btn-primary btn-sm" routerLink="/usuarios/editarUsuario/{{ usuario.id }}">Editar</button></td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #semUsuarios>
+  <div>
+    <p>Ainda não há usuários cadastrados.</p>
+  </div>
+</ng-template>
+
+
